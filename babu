@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Palak ji 💖 Surprise</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://i.pinimg.com/originals/52/d7/74/52d774b8ae2078473fd70f6f2e61db7c.gif') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 3em;
+      color: #fff;
+      text-shadow: 2px 2px 6px #ff4081;
+    }
+
+    .tagline {
+      color: #ffeef2;
+      font-size: 1.3em;
+      margin-bottom: 40px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .box {
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 128, 171, 0.9);
+      border-radius: 20px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.4s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .box:hover {
+      transform: scale(1.05);
+    }
+
+    .shayari {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 182, 193, 0.95);
+      border-radius: 20px;
+      color: #fff;
+      padding: 15px;
+      font-size: 1em;
+      text-align: center;
+      line-height: 1.5em;
+      animation: fadeIn 1s ease-in-out;
+      z-index: 1;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 8s linear infinite;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -8px; left: 0; }
+    .heart::after { left: -8px; top: 0; }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 0.5; }
+      100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    audio {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      z-index: 999;
+    }
+
+    .palak-img {
+      max-width: 90%;
+      margin: 40px auto;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (max-width: 600px) {
+      .box {
+        width: 140px;
+        height: 140px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Palak ji 💖</h1>
+  <p class="tagline">Tap any box to reveal a special Shayari!</p>
+
+  <div class="container">
+    <div class="box" onclick="revealShayari(this, 0)">🎁<div class="shayari"></div></div>
+    <div class="box" onclick="revealShayari(this, 1)">🎀<div class="shayari"></div></div>
+    <div class="box" onclick="revealShayari(this, 2)">💝<div class="shayari"></div></div>
+    <div class="box" onclick="revealShayari(this, 3)">🌸<div class="shayari"></div></div>
+    <div class="box" onclick="revealShayari(this, 4)">🎊<div class="shayari"></div></div>
+    <div class="box" onclick="revealShayari(this, 5)">💌<div class="shayari"></div></div>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <!-- Romantic Song -->
+  <audio autoplay loop controls>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/sy5fpb8g4l8tpgekw09zv/Raabta-Instrumental.mp3?rlkey=qs9zyl6zvyg02dbvex3d5w8ed&dl=0" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Palak ji's Image Below the Boxes -->
+  <div>
+    <img src="WhatsApp Image 2025-07-07 at 4.09.17 PM.jpeg" alt="Palak ji" class="palak-img">
+  </div>
+
+  <script>
+    const shayaris = [
+      "🌹 'Aap ki muskurahat meri pehchaan hai,<br> Aap ki khushi meri jaan hai.'",
+      "💖 'Tumhari har baat mere dil ko chhoo jaati hai,<br> Palak ji, aap meri har dua mein shaamil ho.'",
+      "✨ 'Chand taaron mein roshni tumse hai,<br> Har khushi meri tumse hai.'",
+      "💕 'Tum ho toh sab kuch hai,<br> Tum na ho toh kuch bhi nahi.'",
+      "🌷 'Zindagi mein aayi ho tum ek bahar banke,<br> Palak ji, har din lagta hai pyaar banke.'",
+      "🎶 'Har pal sirf tumhara intezaar hai,<br> Kyunki tum ho toh sab kuch yaar hai.'"
+    ];
+
+    function revealShayari(box, index) {
+      const content = box.querySelector('.shayari');
+      content.innerHTML = shayaris[index];
+      content.style.display = 'block';
+      createHearts();
+    }
+
+    function createHearts() {
+      const hearts = document.getElementById('hearts');
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+        heart.style.backgroundColor = ['#ff4d6d', '#ff6699', '#ff9999'][Math.floor(Math.random() * 3)];
+        hearts.appendChild(heart);
+        setTimeout(() => heart.remove(), 9000);
+      }
+    }
+  </script>
+
+</body>
+</html>
